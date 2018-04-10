@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #root { /*整体边框*/
+            background: #ffffff;
+            width: 1000px;
+            min-height: 4500px;
+
+            margin: 0px auto; /*水平居中*/
+            position: relative;
+
+        }
+
+        #head {
+            background: #ffffff;
+            width: 100%;
+            height: 100px;
+
+        }
+
+        .latyou-box {
+            position: absolute;
+        }
+
+        #left {
+            background: #ffffff;
+            width: 50%;
+
+        }
+
+        .mid {
+            /* min-height: 600px;*/
+            min-height: 430px;
+            top: 100px;
+        }
+
+        #right {
+            background: #ffffff;
+            width: 60%;
+            right: 0;
+        }
+
+        #foot {
+            background: #f9fbe2;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+
+        }
+
+        #nav li {
+            float: left;
+            width: 12.5%;
+            height: 30px;
+            background: #6fbfff;
+            text-align: center;
+        }
+
+        #nav li > a {
+            line-height: 30px;
+            text-decoration: none;
+            color: #a3b8ff;
+        }
+
+        #goods-box > li {
+            width: 33%;
+            padding: 0.16%;
+            float: left;
+            text-align: center;
+
+        }
+
+        #goods-box > li img {
+            width: 90%;
+        }
+
+        #left img {
+
+            position: absolute;
+
+            width: 430px;
+        }
+
+        .e {
+            float: right;
+            margin-right: 356px;
+        }
+
+        .ff {
+            width: 790px;
+            position: absolute;
+            left: 110px;
+            top: 600px;
+        }
+
+        .g {
+            width: 790px;
+            position: absolute;
+            left: 110px;
+            top: 1350px;
+        }
+
+        /*  !*.h{
+              width: 890px;
+               position: absolute;
+           top: 1800px;
+              left: 110px;
+
+          }
+  */
+
+        div.i img {
+            width: 790px;
+            position: absolute;
+            top: 1850px;
+            left: 110px;
+        }
+
+        div.k img {
+            width: 790px;
+            position: absolute;
+            top: 2350px;
+            left: 110px;
+        }
+
+        div.M img {
+            width: 790px;
+            position: absolute;
+            top: 3750px;
+            left: 110px;
+        }
+
+        div.z img {
+            width: 790px;
+            position: absolute;
+            top: 3000px;
+            left: 110px;
+        }
+
+        .latyou-box p {
+            margin-bottom: 8px;
+            line-height: 27px;
+            border-bottom:1px solid rgba(10, 13, 13, 0.38); /*边框颜色*/
+        }
+        .latyou-box a{
+            white-space: normal;
+            color: #9c9c9c;
+            text-decoration: none;
+        }
+        .latyou-box b{
+            margin: 0 3px;
+            font-weight:400;
+            color:#ddd
+        }
+        .n{
+            white-space: nowrap;
+            color: #9c9c9c;
+        }
+         #ner li {
+            float: left;
+            width: 12.5%;
+            height: 30px;
+            background: #31bfcc;
+            text-align: center;
+        }
+
+        #ner li > a {
+            line-height: 30px;
+            text-decoration: none;
+            color: #a3b8ff;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head" class="latyou-box">
+        <h1>淘宝网</h1>
+        <img src="天猫.png" alt="">
+        <ul id="nav">
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+            <li><a href="#"></a>列表项</li>
+        </ul>
+    </div><!--页首结束-->
+
+
+    <div id="left" class="latyou-box mid">
+        <img src="TB2.ZwsaZj_B1NjSZFHXXaDWpXa_!!1999920158.jpg_430x430q90.jpg" alt="">
+
+
+    </div>
+    <div id="right" class="latyou-box mid">
+
+        <div id="a">款上市 vivox20全屏全新正品手机新一代全面屏 AI智慧拍照 照亮你的美</div>
+        <div><span class="f">价格  </span><span class="e">￥2998.00-3298.00</span></div>
+        <div><span class="f">注销价</span><span class="e">￥2898.00-3198.00</span></div>
+        <div><span class="f">本店活动</span><span class="e">满99元包邮</span></div>
+
+       <ul id="ner">
+            <li><a href="javascript:show(0)">商品详情</a></li>
+            <li><a href="javascript:show(1)">宝贝评价</a></li>
+            <li><a href="javascript:show(2)">规格参数</a></li>
+
+
+        </ul>
+    </div>
+
+
+    <div id="abcd" class="latyou-box">
+        <div class="ff">
+            <img src="TB2vqomm22H8KJjy1zkXXXr7pXa_!!1824502713.jpg" alt=""></div>
+        <div class="g"><img src="TB20i22mZnI8KJjSsziXXb8QpXa_!!1824502713.jpg" alt=""></div>
+
+        <div class="i"><img src="TB2CYBifHsTMeJjy1zcXXXAgXXa_!!65332900.jpg" alt=""></div>
+        <div class="k"><img src="TB27gZ9frsTMeJjSszdXXcEupXa_!!65332900.jpg" alt=""></div>
+        <div class="M"><img src="TB2vEj0jgvD8KJjSsplXXaIEFXa_!!65332900.jpg" alt=""></div>
+        <div class="z"><img src="TB21vz8jdzJ8KJjSspkXXbF7VXa_!!65332900.jpg" alt=""></div>
+    </div>
+    <div id="foot" class="latyou-box">
+        <p>
+            <span><a href="http://www.alibabagroup.com/cn/global/home">阿里巴巴集团</a></span><b>|</b>
+            <span><a href="//www.taobao.com">淘宝网</a></span><b>|</b>
+            <span><a href="//www.tmall.com">天猫</a></span><b>|</b>
+            <span><a href="//ju.taobao.com">聚划算</a></span><b>|</b>
+            <span><a href="http://www.aliexpress.com">全球速卖通</a></span><b>|</b>
+            <span><a href="http://www.alibaba.com/">阿里巴巴国际交易市场</a></span><b>|</b>
+            <span><a href="http://www.1688.com">1688</a></span><b>|</b>
+            <span><a href="http://www.alimama.com">阿里妈妈</a></span><b>|</b>
+            <span><a href="http://www.fliggy.com/">飞猪</a></span><b>|</b>
+            <span><a href="http://www.aliyun.com">阿里云计算</a></span><b>|</b>
+            <span><a href="http://www.alios.cn/">AliOS</a></span><b>|</b>
+            <span><a href="http://www.aliqin.cn/">阿里通信</a></span><b>|</b>
+            <span><a href="http://www.etao.com/">一淘</a></span><b>|</b>
+            <span><a href="http://www.net.cn">万网</a></span><b>|</b>
+            <span><a href="http://www.autonavi.com/">高德</a></span><b>|</b>
+            <span><a href="http://www.uc.cn/">UC</a></span><b>|</b>
+            <span><a href="http://www.umeng.com/">友盟</a></span>
+            <span><a href="http://www.xiami.com">虾米</a></span><b>|</b>
+            <span><a href="https://www.damai.cn/">大麦网</a></span><b>|</b>
+            <span><a href="http://www.dingtalk.com/?lwfrom=20150130160830727">钉钉</a></span><b>|</b>
+            <span><a href="https://www.alipay.com">支付宝</a></span><b>|</b>
+            <span><a href="http://www.youku.com/">优酷</a></span><b>|</b>
+            <span><a href="http://www.tudou.com/">土豆</a></span><b>|</b>
+            <span><a href="http://www.alihealth.cn/">阿里健康</a></span><b>|</b>
+            <span><a href="http://www.alibabapictures.com/simp/0-home.html">阿里影业</a></span><b>|</b>
+            <span><a href="http://www.alisports.com/cn/">阿里体育</a></span><b>|</b>
+            <span><a href="https://www.mybank.cn/">网商银行</a></span>
+        </p>
+        <p><span><a href="//img.alicdn.com/tps/i2/TB1YFcPLpXXXXaiXFXXcaDpFFXX-803-473.png">网络文化经营许可证：浙网文[2013]0268-027号</a></span><b>|</b>
+            <span><a href="http://zcainfo.miitbeian.gov.cn/state/outPortal/loginPortal.action">增值电信业务经营许可证：浙B2-20080224</a></span><b>|</b>
+            <span class="n">信息网络传播视听节目许可证：1109364号</span><b>|</b>
+            <span class="n">互联网违法和不良信息举报电话：0571-81683755 blxxjb@alibaba-inc.com</span>
+        </p>
+    </div>
+
+</div>
+</body>
+</html>

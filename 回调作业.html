@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--<script>
+   var Worker=function(name){
+       this.name=name;
+       this.key=function(){}
+       console.log("给钥匙"+this.name);
+       console.log(this.name+"施工");
+
+
+    }
+   var shuidiangong=new Worker("水电工");
+    shuidiangong.key();
+   var nigong=new Worker("泥工");
+      nigong.key();
+   var mugong=new Worker("木工");
+       mugong.key();
+   var youqigong=new Worker("油漆工");
+      youqigong.key();
+
+
+</script>-->
+<script>
+
+    function House(){
+        this.zhuangXiu=function(visitor){
+            visitor.doThing("钥匙");
+        }
+    }
+    function  Visitor(type){
+        this.type=type;
+        this.doThing=function(a){
+            console.log(`我是${this.type}工人,我拿到了钥匙${a}我进行装修`);
+        }
+    }
+    var house=new House();
+    house.zhuangXiu(new Visitor("水电工"));
+    house.zhuangXiu(new Visitor("泥工"));
+    house.zhuangXiu(new Visitor("木工"));
+    house.zhuangXiu(new Visitor("油漆工"));
+</script>
+ <!--/* 回调作业
+    1 房子交房了，请如下的装修工人来入场装修
+    水电工
+    泥工
+    木工
+    油漆工
+    把钥匙给他们*/-->
+</body>
+</html>

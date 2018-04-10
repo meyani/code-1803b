@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+          /*  width: 100%;
+            height: 100%;*/
+
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+
+        #root {
+            width: 1000px;
+            display: flex; /*采用flex布局*/
+            flex-wrap: wrap; /*flex布局换行*/
+        }
+
+        #head {
+
+            height: 100px;
+
+        }
+
+        #middle {
+            display: flex;
+        }
+
+        #foot {
+
+            height: 100px;
+        }
+
+        #left {
+
+            width: 300px;
+
+        }
+
+        #right {
+
+            width: 700px;
+        }
+        #tbl{
+            height: 400px;
+            width:500px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head"></div><!--head end-->
+    <div id="middle">
+        <div id="right">
+        <table id="tbl"></table>
+        </div>
+        <div id="left"></div>
+    </div>
+    <div id="foot"></div>
+
+</div>
+<form id="tt" >
+姓名：<input type="text" name="name"><br>
+    年龄：<input type="text" name="age"><br>
+    性别：男<input type="radio" name="sex" value="男">
+         女 <input type="radio" name="sex" value="女"><br>
+    <!--级别:<select name="duanwei">
+    <option value="青铜">青铜</option>
+    <option value="白云">白银</option>
+    <option value="黄金">黄金</option>
+    <option value="王者">王者</option>
+
+    </select><br>-->
+</form>
+<button onclick="queding()">确定</button><br>
+<script type="text/javascript">
+    var persons=[
+        {name:"张三",age:33,sex:"男"},
+        {name:"老王",age:45,sex:"男"},
+        {name:"彭桂香",age:49,sex:"女"},
+        {name:"李卫红",age:60,sex:"女"},
+        {name:"王二狗",age:5,sex:"女"},
+    ];
+     var ShenXiao = ['狗', '鸡', '猴', '羊', '马', '蛇', '龙', '兔', '虎', '牛', '鼠', '猪'];
+   function showTable(){/*建立数据和表格之间的映射*/
+        var str="";
+    /*for(var i=0;i<persons.length;i++){*/
+       for(var i in persons){
+       /* if(i in persons)*/
+           str+="<tr>"
+           for(var j in persons[i]){
+               str+="<td>"+persons[i][j]+"</td>"
+           }
+           str+=`<td>${ShenXiao[persons[i].age%12]}</td><td>
+        <a href="javascript:del(${i})">删除</a>|<a href="javascript:update(${i})">修改</a>
+        </td>
+        </tr>`
+        /*str+=`
+        <tr>
+        <td>${persons[i].name}</td>
+        <td>${persons[i].age}</td>
+        <td>${persons[i].sex}</td>
+        <td>
+        <a href="javascript:del(${i})">删除</a>
+        </td>
+        </tr>
+        `;*/
+    }
+    document.querySelector("#tbl").innerHTML=str;
+   }
+    showTable();
+
+    function del(line){
+        delete persons[line];
+        showTable();
+    }
+    function update(line){
+        var bb=document.querySelector('#tt');
+            s=line;
+        for(var i in persons[line]){
+        bb[i].value=persons[line][i]
+    }
+    }
+    function queding(){
+        var bb1=document.querySelector('#tt')
+        for(var i in persons[s]){
+        persons[s][i]=bb1[i].value;
+    }
+     showTable();
+   }
+   /* function  max(a,b){
+        return a>b?a:b;
+    }
+    function f(x){
+        return 10*x+22;
+
+    }
+    var a=f;
+
+    var xiaoMianGuan={
+        name:"老官面",
+        address:"银盆南路88号",
+        phone:"0731000",
+        paoMian:function(a){
+            var caidian=["红烧牛肉面","牛杂粉","牛肉面","刀削面"];
+            return caidian[a];
+        }
+    };
+   var mian= xiaoMianGuan.paoMian(1);
+    console.log(mian);
+
+    var oneDayThing=[
+        function(){
+            console.log(``)
+
+
+
+        },  function() {
+            console.log(`
+            起床
+            上厕所`)
+    }
+    ];
+    for(var i in oneDayThing){
+        oneDayThing[i]();
+    }
+    var shengXiao=['狗','鸡','猴','羊','马','蛇','龙','兔','虎','牛','鼠','猪']*/
+</script>
+</body>
+</html>

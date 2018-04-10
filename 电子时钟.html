@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #root {
+            width: 1000px;
+            display: flex; /*采用flex布局*/
+            flex-wrap: wrap; /*flex布局换行*/
+        }
+
+        #head {
+
+            height: 100px;
+
+        }
+
+        #middle {
+            display: flex;
+        }
+
+        #foot {
+
+            height: 100px;
+        }
+
+        #left {
+
+            width: 300px;
+
+        }
+
+        #right {
+
+            width: 700px;
+        }
+
+        #kuang {
+            width: 200px;
+            height: 30px;
+            background: #fcf9ff;
+            position: absolute;
+            left: 500px;
+
+            box-shadow: 0 0 5px 3px #fbecce;
+
+        /* background-color: white;
+            }
+        </style>
+</head>
+<body>
+<div id="root">
+    <div id="head"></div><!--head end-->
+    <div id="middle">
+        <div id="right">
+            <div id="kuang">
+
+            </div>
+
+        </div>
+    </div>
+    <div id="left"></div>
+</div>
+<div id="foot"></div>
+
+
+</div>
+
+<script>
+
+        //SimpleDateFormat formatter=new SimpleDateFormat("12:23:12");
+
+    //2018:03:27 13:25:56
+    setInterval(function () {
+        var i;
+    var ss =new Date();
+
+       y= ss.getFullYear();
+       m= ss.getMonth()+1;
+       d= ss.getDate();
+
+
+       h= ss.getHours();
+       f= ss.getMinutes();
+       s=ss.getSeconds();
+       /* function ff(i) {
+
+
+            if (i < 10) {
+                return "0" + i;
+            } else {
+                return i;
+            }
+        }*/
+         document.getElementById("kuang").innerHTML=y+"年"+m+"月"+d+"日"+h+":"+f+":"+s;
+    }, 1000)
+</script>
+</body>
+</html>

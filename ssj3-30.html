@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--名词要么是对象，要么是属性
+动词就一定是方法-->
+<script>
+    LaoZhang={
+        name:"老张",
+    kaiche:function(car,target){
+
+        car.go(target);
+        }
+    }
+    DongBei= {
+        name: "中国的东北地区"
+    }
+    YiYuan={
+
+        fengZheng:function(Ren){
+            console.log(`
+            这里是一家有良心的医院,我们包治百病,给${Ren.name},缝5针治好了`);
+
+
+        }
+
+    }
+    DongBeiRen={
+        shedToYiYuan:function(Ren){`
+             我是一个东北人,东北人都是活雷锋,我送${Ren.name}去医院`}
+           return Ren
+    }
+
+    Car={
+        go:function(target){
+            console.log(`
+            我是一辆玛莎拉蒂，我现在要去${target.name},发生了车祸`);
+        }
+    }
+     LaoZhang.kaiche(Car,DongBei);
+    var ren=DongBeiRen.shedToYiYuan(LaoZhang);
+    YiYuan.fengZheng(ren);
+</script>
+</body>
+</html>

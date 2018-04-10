@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+        width: 100px;
+            height: 100px;
+        }
+        .first{
+            background: yellow;
+            /*float: left;*/
+            position: relative;
+            right: 0;
+        }
+        .secend{
+            background: red;
+            float: left;
+
+
+        }
+        .secend:before{
+              content: 'a';
+        }
+        .third{
+            background: blue;
+           /* float: left;*/
+           /* clear: left;*/
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div class="box first"></div>
+<div class="box secend"></div>
+<div class="box third"></div>
+</body>
+</html>

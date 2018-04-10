@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+
+    //bbb(1);
+   // aaa();//aaa is not a function
+    var aaa=function(){
+        console.log("aaa");
+    }
+    aaa();
+    function bbb(a,b){
+         console.log("bbb")
+    }
+   /* 回调作业
+    1 房子交房了，请如下的装修工人来入场装修
+    水电工
+    泥工
+    木工
+    油漆工
+    把钥匙给他们*/
+   {
+
+    }
+    var p={age:20}
+
+
+    var Actor=function(name){
+        this.name=name;
+        this.show=function(){
+
+             console.log("我是"+this.name)
+        }
+    }
+    var liudeHua=new Actor('刘德华');
+    liudeHua.show();
+
+    var liangChaoWei=new Actor('梁朝伟');
+    liangChaoWei.show();
+
+    var name="彭东明";
+    var ss=liangChaoWei.show.bind(window);//让this指向参数对象
+
+   // 方法.bind(thid指向对象)绑定
+
+    function max(a,b){
+        return a>b?a:b;
+    }
+
+    function min(){
+       var arr= Array.prototype.slice.apply(arguments,[0]);
+        console.log(arr);
+       //console.log(arguments[0],arguments[1]);
+    }
+</script>
+<!--max(10,8)
+10
+max.apply(null,[10,8])
+10
+max.apply(Date,[10,8])
+10
+max.apply(s,[10,8])
+
+var arr=[45,56,123,456,23]
+undefined
+Math.max.apply(null,arr)
+456
+arr.slice(4)
+[23]
+document.body.children
+HTMLCollection [script]0: scriptlength: 1__proto__: HTMLCollection
+Array.prototype.slice.apply(document.body.children,[0])
+[script]
+arr
+[script]-->
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #root {
+            width: 1000px;
+            display: flex; /*采用flex布局*/
+            flex-wrap: wrap; /*flex布局换行*/
+        }
+
+        #head {
+
+            height: 100px;
+
+
+        #middle {
+            display: flex;
+        }
+
+        #foot {
+
+            height: 100px;
+        }
+
+        #left {
+
+            width: 300px;
+
+        }
+
+        #right {
+
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head"></div><!--head end-->
+    <div id="middle">
+        <div id="right"></div>
+        <div id="left"></div>
+    </div>
+    <div id="foot"></div>
+
+</div>
+<script>
+    Date.prototype.toString=function(){
+        return this.getFullYear()+"-"+(this.getMonth()+1)+"-"+this.getDate();
+    }
+
+   /* var age =10;
+    var person={
+        age:10
+    }
+   /!*
+    var a=age;
+    a=20;
+    console.log(age);*!/
+    var b=person;
+   // b=window;
+    b=null;//Cannot set property 'age' of null
+    b.age=20;
+    console.log(person.age);*/
+
+  // 如果是负数就返回它的相反数
+   //如果不是返回它本身
+  /*function abs(a){
+      if(a<0){
+          return -a;
+      }else {
+      return a;
+  }
+  }*/
+
+   /* function abs(a){
+      if(a<0){
+          return -a;
+      }
+      return a;
+
+  }*/
+   /* function abs(a){
+     return a<0 ? -a : a;
+  }*/
+    /*setInterval(function(){
+        alert(111);
+    },1000);*/
+
+    var nn= Date.now();
+    for(var i=0;i<100000;i++);
+    console.log(Date.now()-nn);
+</script>
+
+
+<!--
+Date
+ƒ Date() { [native code] }
+new Date
+Tue Mar 27 2018 15:49:32 GMT+0800 (中国标准时间)
+Date.parse('2008-7-28')
+1217174400000
+new Date(Date.parse('2008-7-28'))
+Mon Jul 28 2008 00:00:00 GMT+0800 (中国标准时间)
+new Date(1217174400000)
+Mon Jul 28 2008 00:00:00 GMT+0800 (中国标准时间)
+new Date('2008-7-27)
+VM154:1 Uncaught SyntaxError: Invalid or unexpected token
+new Date('2008-7-27')
+Sun Jul 27 2008 00:00:00 GMT+0800 (中国标准时间)
+Date.parse('2008-7-27')
+1217088000000
+var sjc=1217174400000-24*60*60*1000
+undefined
+new Date(sjc)
+Sun Jul 27 2008 00:00:00 GMT+0800 (中国标准时间)
+
+小明23岁，生日8月9日，小芳比他小5岁零3个月零12天，问小芳的出生年月日，问小芳在今年的生日是星期几
+    18                        4  27          2000
+    5
+Date.parse('2018-3-27')
+1522080000000
+var nn=Date.parse("2000-4-27")
+undefined
+nn
+956764800000
+var s=new Date(nn)
+undefined
+s
+2000-4-27
+var d=s.getDate
+undefined
+var d=s.getDate()
+undefined
+d
+27
+var d=s.getDay()
+undefined
+d
+4
+
+
+var nn=Date.parse("2018-4-27")
+undefined
+nn
+1524758400000
+var s=new Date(nn)
+undefined
+s
+2018-4-27
+var d=s.getDay()
+undefined
+d
+5
+
+var date=new Date()
+undefined
+date.s
+undefined
+date.setDate
+ƒ setDate() { [native code] }
+date.getDate()+56
+83
+var dd=date.getDate()+56
+undefined
+date.setDate(dd)
+1526978149575
+date
+2018-5-22
+
+2 表格：姓名 年龄 性别 生肖
+var shengXiao=['狗','鸡','猴','羊','马','蛇','龙','兔','虎','牛','鼠','猪']
+shengXiao[24]
+undefined
+shengXiao[17%12]
+"蛇"
+shengXiao[24%12]
+"狗"
+shengXiao[21%12]
+"牛"
+shengXiao[1]
+"鸡"
+
+3 搞一个电子时钟 2018:03:27 13:25:56
+-->
+split 数字，数组和字符串相互转换  split("\t")制表符
+var arr=[1,2,3]
+undefined
+var str="好好学习天天向上"
+undefined
+str
+"好好学习天天向上"
+str.l
+undefined
+str.length
+8
+str.charAt(3)
+"习"
+'abc'.charCodeAt(1)
+98
+'abc'.charCodeAt(2)
+99
+'abc'.charCodeAt(3)
+NaN
+'abc'.charCodeAt(0)
+97
+'ABC'.charCodeAt(0)
+65
+'ABC'.charCodeAt(1)
+66
+'ABC'.charCodeAt(2)
+67
+
+</body>
+</html>

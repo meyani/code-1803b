@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		*{
+			margin: 0;
+			padding:0;
+		}
+		#cvs{
+			/*，阴影效果*/
+		    box-shadow: 5px 5px 15px 5px #333,-1px -1px 5px 3px #ccaeae;
+		    /*让canvas居中于页面*/
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%,-50%);
+		}
+		#alert{
+			text-align: center;
+			color: rgb(105, 97, 97);
+		}
+	</style>
+</head>
+<body>
+   <h1 id="alert"></h1>
+
+	<canvas id="cvs" width="450" height="450">
+
+
+	</canvas>
+	<script type="text/javascript">
+      var hh=document.getElementById("alert");
+		// - 获取到画板
+		var cvs = document.getElementById("cvs");
+		// - 获取上下文
+		var ctx = cvs.getContext("2d");
+		var option={
+			0:20,
+			1:0,
+			2:80,
+			3:200,
+			4:1000,
+		}
+		init();
+
+
+		var G = {
+			black:true,
+		};
+		// 1、画棋盘
+		function drawPlaint() {
+			// 	有15列，15行，每行30像素的宽度，每列30像素高度
+
+			// - 循环画出行和列的直线
+			ctx.strokeStyle='#666';
+			ctx.textBaseline="middle";//垂直对齐
+			ctx.textAlign="center";//水平对齐
+			for(var i=0;i<15;i++){
+				var x1 = 15,x2 = 435,y= 15+(i*30);
+				/*画行*/
+				ctx.moveTo(x1,y);
+				ctx.lineTo(x2,y);
+				ctx.stroke();
+				/*画列*/
+				ctx.moveTo(y,x1);
+				ctx.lineTo(y,x2);
+				ctx.stroke();
+				ctx.beginPath();
+
+				ctx.fillText(i,3,y);//填充文字，（内容，x,y）
+				ctx.closePath();
+				ctx.beginPath();
+
+				ctx.fillText(i,y,8);//填充文字，（内容，x,y）
+				ctx.closePath();
+			}
+		}
+		drawPlaint() ;
+        var lastPointBlack=null;
+	     var a=null;
+
+		// 2、画棋子
+		// 	棋子在行列线的交叉处
+        /*function drawZi3 (){
+
+              if(item.step!=null){
+				   drawZi2(item.x,item.y,item.step==5)
+			  }
+			item=getQiZi(x,y);
+                //把当前的子给个样式
+              x = x*30+15;
+			y = y*30+15;
+			ctx.beginPath();
+			ctx.arc(x,y,13,0,2*Math.PI);
+			ctx.closePath();
+			// var crg = ctx.createRadialGradient(100,150,20,100,150,0);
+			// crg.addColorStop(0,'red');
+			// crg.addColorStop(1,'green');
+			if(black){
+				ctx.fillStyle = "yellow";
+			}else{
+				ctx.fillStyle = "yellow";
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "#333";
+				ctx.stroke();
+			}
+
+			ctx.fill();
+		}*/
+
+
+		function drawZi(x,y,black) {
+
+
+
+
+
+			if(lastPointBlack!=null){
+				//把最后一粒子还原，
+               drawZi2(lastPointBlack.x,lastPointBlack.y,lastPointBlack.state==1)
+
+
+
+			}
+
+			lastPointBlack=getQiZi(x,y);
+                //把当前的子给个样式
+              x = x*30+15;
+			y = y*30+15;
+			ctx.beginPath();
+			ctx.arc(x,y,13,0,2*Math.PI);
+			ctx.closePath();
+			// var crg = ctx.createRadialGradient(100,150,20,100,150,0);
+			// crg.addColorStop(0,'red');
+			// crg.addColorStop(1,'green');
+			if(black){
+				ctx.fillStyle = "red";
+			}else{
+				ctx.fillStyle = "red";
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "#333";
+				ctx.stroke();
+			}
+
+			ctx.fill();
+		}
+		function drawZi2(x,y,black){
+			/*算出在x列，y行的像素坐标点*/
+			x = x*30+15;
+			y = y*30+15;
+			ctx.beginPath();
+			ctx.arc(x,y,13,0,2*Math.PI);
+			ctx.closePath();
+			// var crg = ctx.createRadialGradient(100,150,20,100,150,0);
+			// crg.addColorStop(0,'red');
+			// crg.addColorStop(1,'green');
+			if(black){
+				ctx.fillStyle = "#333";
+			}else{
+				ctx.fillStyle = "#eee";
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "#333";
+				ctx.stroke();
+			}
+
+			ctx.fill();
+
+		}
+
+		// drawZi(false);
+
+		function init() {/*游戏的初始化*/
+			var points = [];
+			var fangAns = [];
+			var singlePoints=[];//一维数组
+
+			//点
+			function Point(x,y) {
+				this.fangAns=[];
+				this.score=0;
+				this.x = x;
+				this.y = y;
+				this.state = 0;//  0、没有子 ;1、黑子; 2、白子
+			}
+
+			//方案
+			function FangAn() {
+				this.points = [];
+				this.step  = 0;//方案完成的程度
+				this.state = 0;//  0、没有子 ;1、全黑子; 2、全白子；3、黑子和白子都有
+				this.add = function (x,y) {
+					var point = points[x][y];
+					this.points.push(point);
+					point.fangAns.push(this);//方案添加棋子的同时，棋子也添加方案
+				}
+
+			}
+
+            var point=null;
+			//添加所有的点
+			for (var i = 0; i < 15; i++) {
+				points[i]=[];
+				for(var j=0;j<15;j++){
+					 point=new Point(i,j);
+					points[i][j] =point;
+					singlePoints.push(point);
+				}
+			}
+
+			var temp = null;
+			// 添加方案，列
+			for( var x = 0;x<15;x++){
+				for(var y = 0;y<11;y++){
+					temp = new FangAn();
+					for(var k =0;k<5;k++){
+						temp.add(x,y+k);
+					}
+					fangAns.push(temp);
+				}
+			}
+
+			// 添加方案，横
+			for( var x = 0;x<15;x++){
+				for(var y = 0;y<11;y++){
+					temp = new FangAn();
+					for(var k =0;k<5;k++){
+						temp.add(y+k,x);
+					}
+					fangAns.push(temp);
+				}
+			}
+			// 添加方案，斜
+			for( var x = 0;x<11;x++){
+				for(var y = 0;y<11;y++){
+					temp = new FangAn();
+					for(var k =0;k<5;k++){
+						temp.add(x+k,y+k);
+					}
+					fangAns.push(temp);
+				}
+			}
+			// 添加方案，反斜
+			for( var x =14;x>3;x--){
+				for(var y = 0;y<11;y++){
+					temp = new FangAn();
+					for(var k =0;k<5;k++){
+						temp.add(x-k,y+k);
+					}
+					fangAns.push(temp);
+				}
+			}
+
+
+			window.points = points;
+			window.fangAns = fangAns;
+			window.singlePoints=singlePoints
+
+		}
+
+		// 3、用户点击棋盘，画出相应的棋子，棋子要求黑白间隔，下一个黑子在下一个白字
+
+		cvs.onclick = function (e) {
+			// debugger;
+			var x = e.offsetX;
+			var y = e.offsetY
+			// 算出在x列，y行
+			x = Math.floor(x/30);
+			y = Math.floor(y/30);
+			if(!hasZi(x,y)){ /*没有子才画子*/
+
+
+				 handlerLuoZi(x,y, false);
+			}
+
+
+		}
+
+
+		function getQiZi(x,y){
+			if(x<0||x>14||y<0||y>14){
+				console.error("这个(%d,%d)点不存在",x,y);
+			}
+
+			return points[x][y];
+		}
+
+		function hasZi(x,y) {
+			return points[x][y].state != 0;
+		}
+
+		// 4、判断输赢，满足一行、一列、斜线、反斜线任意一个5子相连都表示赢了
+		// 赢了之后，显示赢家的颜色，然后棋盘不能再下棋
+
+		function  handlerLuoZi(x,y,black){
+			//计算机下完棋这个G.black不会改变颜色
+           var point=getQiZi(x,y);
+			points[x][y].state = black ? 1 :2;
+			drawZi(x,y,black);
+			var arr=[2,1];
+
+			var over=false;
+			if(point){
+				for(var i in point.fangAns){
+					//0、没有子 ;1、全黑子; 2、全白子；3、黑子和白子都有
+					var item=point.fangAns[i];
+					if(item.state==3){
+						continue;
+
+					}
+
+					if(item.state==0){
+						item.state=arr[Boolean(black)*1];
+					}
+					if(item.state==arr[Boolean(black)*1]){//已方的方案
+						item.step++;
+					}else if(item.state!=0){//对方的方案
+						item.state=3;
+					}
+
+					if(item.step==5){
+						over=true;
+
+
+
+						var b=("棋局结束"+(black?"黑方":"白方")+"赢了");
+						hh.innerHTML+=b;
+							cvs.onclick=function(){
+							var b=("棋局结束"+(black?"黑方":"白方")+"赢了");
+							}
+
+						break;
+
+					}
+
+				}
+			}
+			if(!black&&!over){//如棋局没有结束白子下棋，并且
+				ComputerPlay();
+			}
+			//将这个子的已方的方案step累加
+			//如果这个方案是对的，那么这个方案作废
+			//如果这个方案有效，并且已经连线成5个，也就是step=5
+		}
+		// 5、实现一个算法，陪伴玩家下棋
+		function ComputerPlay(){
+			//已经有子的点去掉
+			singlePoints=singlePoints.filter(function(item){
+				return item.state==0;
+			});
+			   for(var i in singlePoints) {
+				   var point = singlePoints[i];
+				   point.score = 0;
+				   point.score = point.fangAns.map(function (fangan) {
+					   if (fangan.state == 3) {//作废的方案不给分
+						   return 0;
+					   }
+
+					   return option[fangan.step];
+				   }).reduce(function (pre, cur)
+				   {
+					   return pre + cur;
+				   });
+			   }
+			//将评分进行排序
+			singlePoints.sort(function(a,b){
+				return b.score-a.score;
+			});
+			var greatPoint=singlePoints[0];
+			handlerLuoZi(greatPoint.x,greatPoint.y,true);
+		}
+
+
+	</script>
+</body>
+</html>

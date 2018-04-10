@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的第一个页面</title>
+    <style>
+        /*css如何使用
+        1.<style>标签
+        2.link标签外联样式表
+        3.行内样式
+        css优先级
+        css选择器
+        css常用样式选项
+        css布局
+
+
+
+        */
+
+       #alert{
+           background: #00e0e0;
+           height: 50px;
+           color: crimson;
+       }
+
+    </style>
+</head>
+<body>
+<h1 id="alert" ></h1>
+<script>/*javascript 负责页面的动态脚本*/
+    document.getElementById('alert').innerHTML="我爱我的祖国";
+setTimeout(function()
+{
+    document.getElementById('alert').innerHTML = "i love my contry ";},2000)
+
+</script>
+</body>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--&lt;!&ndash;要求做验证
+    密码不一致不允许注册
+    用户名或密码为空不允许注册-
+  2表单要求，都要漂亮一点
+  3 要添加修改用户信息的功能
+  用户信息要求包含
+  姓名
+  密码
+  年龄
+  昵称
+  籍贯 湖南
+  性别
+  民族
+  国籍
+  身高
+  体重
+  生肖->-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+        }
+     #hh{
+           text-align: center;
+               color: #795548;
+     }
+      #bb{
+
+      }
+        html{
+            position: absolute;
+            left: 400px;
+        }
+        a{
+            position: absolute;
+            left: 80px;
+               color: #908383;
+
+        }
+
+        input#passagian{
+                width: 105px;
+        }
+    </style>
+</head>
+<body>
+<h1 id="hh">注册界面</h1>
+<form id="bb">
+    姓名：<input type="text" name="uName"><br>
+    昵称：<input type="text" name="uName1"><br>
+    密码：<input type="password" name="pass" ><br>
+    再次输入密码：<input type="password" id="passagian"><br>
+    年龄：<input type="number" name="age"><br>
+    性别：男<input type="radio" name="sex" value="男" checked>
+         女<input type="radio" name="sex" value="女"><br>
+    籍贯：<select name="jiguan" >
+    <option value="湖南">湖南</option>
+    <option value="四川">四川</option>
+    <option value="广州">广州</option>
+    <option value="上海">上海</option>
+    <option value="北京">北京</option>
+</select>
+    生肖:  <select name="shengxiao" id="">
+        <option value="狗">狗</option>
+        <option value="鸡">鸡</option>
+        <option value="猴">猴</option>
+        <option value="羊">羊</option>
+        <option value="马">马</option>
+        <option value="蛇">蛇</option>
+        <option value="龙">龙</option>
+        <option value="兔">兔</option>
+        <option value="虎">虎</option>
+        <option value="牛">牛</option>
+        <option value="鼠">鼠</option>
+        <option value="猪">猪</option>
+
+    </select><br>
+
+</form>
+<a href="javascript:regist()">确认注册</a>
+
+<script>
+    var users=[];
+      var ff=document.forms[0];
+    var users=localStorage.getItem('users');/*获取本地存储*/
+      users&&(users=JSON.parse(users))/*如果存在该内容则进行JSON的解析*/
+    users||(users=[])/*如果不存在该内容则创建一个数组*/
+
+    function regist(){
+        User=({
+            name:ff.uName.value,/*获取用户文本框*/
+        pass:ff.pass.value,/*获取密码*/
+        name1:ff.uName1.value.trim(),
+        age:ff.age.value.trim(),
+        sex:ff.sex.value.trim(),
+        jiguan:ff.jiguan.value.trim(),
+        shengxiao:ff.shengxiao.value.trim()
+        });
+     /*   passagian=document.getElementById('passagian').value;
+*/
+
+
+
+       /* if(passagian!==pass){
+
+            alert("两次密码输入不一致,请重新输入");
+          return;
+
+        }*/
+        /*var obj={
+            name:name,
+            pass:pass,
+            name1:name1,
+            age:age,
+            sex:sex,
+            jiguan:jiguan,
+            shengxiao:shengxiao
+        }*/
+        users.push(User);/*将新注册的用户添加到用户列表*/
+        localStorage.setItem('users',JSON.stringify(users));/*将用户列表从新写入本地存储*/
+        location.href="login.html";/*页面跳转*/
+    }
+</script>
+
+</body>
+</html>

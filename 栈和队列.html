@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<table id="tbl"></table>
+<input type="text" oninput="haha(this)">
+<h1 id="alert"></h1>
+<script>
+var hh=document.getElementById("alert");
+    function  haha(a){
+        hh.innerHTML= a.value;
+    }
+   // oninput :输入就触发
+    //onchange:改变完，输入焦点才触发
+    //搞一个文本框，用户输入小写字母
+   /* 'a'.charCodeAt(0)
+    "97"
+    String.fromCharCode(97-32)
+    "a"
+    api| 参数| 说明
+    String.fromCharCode()|编码|将一个编码转换成字符串
+    'a'.charCodeAt(0)|索引|将字符串中的索引位置的字符串转换成编码
+    ab.toUpperCase()||将字符串转大写
+    "DFDDG".toLowerCase()|将字符串转小写
+    str.endswidth("png") |判断结尾的字符串|判断字符串是不是以**结尾
+    str.indexOf("tem")|子字符串|查找子字符串在字符串中的位置
+    str.substring(3,8)|开始位置，结束位置（不包括）|截取一段字符串
+    str.split("")|指定分隔符|将一个字符串切割成为一个字符串数组
+    str.replace()|被替换的字符串，替换成新值|将字符串进行替换
+    str.search()|查找的条件|在字符串中进行查找
+    str.trim()|去掉前后空格*/
+
+/*1搞一个文本框
+
+2将以下的文本装置"this is my info">"ofno ym si siht"
+     栈
+    arr.pop();从数组的后边弹出
+    arr.push();从后面加入的数组
+   队列
+    arr.sort();
+    arr.shift();*/
+/*
+3.将以下数组，50岁以上的人去掉，18岁以下的人去掉，显示出来表格
+var users=[
+
+        {name:"张三",sex:"女",age:"23",shenxiao:""},
+        {name:"彭桂香",sex:"女",age:"21",shenxiao:""},
+        {name:"老李",sex:"男",age:"24",shenxiao:""},
+        {name:"李师",sex:"女",age:"35",shenxiao:""},
+        {name:"王帅",sex:"男",age:"18",shenxiao:""},
+    ];
+    要求把年龄大的排在前面，如果年龄相等，则把男性排在前面
+*/
+
+
+/*str="this is my info";
+"this is my info"
+str
+"this is my info"
+var arr=[]
+undefined
+arr.push(str[0])
+1
+arr
+["t"]
+arr.push(str[1])
+2
+ar
+
+arr
+(2) ["t", "h"]
+arr.push(str[2])
+3
+arr.push(str[3])
+4
+arr.push(str[4])
+5
+arr
+(5) ["t", "h", "i", "s", " "]
+arr.pop(1)
+" "
+arr.pop[1]
+undefined
+arr.pop[2]
+undefined
+arr.pop(2)
+"s"
+arr.pop(3)
+"i"
+arr.pop(4)
+"h"
+arr.pop(5)
+"t"*/
+
+
+ var users=[
+
+        {name:"张三",sex:"女",age:"23",shenxiao:""},
+        {name:"彭桂香",sex:"女",age:"21",shenxiao:""},
+        {name:"老李",sex:"男",age:"21",shenxiao:""},
+        {name:"李师",sex:"女",age:"35",shenxiao:""},
+        {name:"王帅",sex:"男",age:"18",shenxiao:""},
+    ];
+     users.sort(function(a,b){
+
+       var r= b.age-a.age;
+         if(r==0){
+             return(b.sex.charCodeAt(0)- a.sex.charCodeAt(0));
+         }
+         return r;
+    });
+
+    //将数组进行迭代==》回调处理每一次迭代的逻辑
+               //forEach，map
+    //hadoop=>3篇论文=》<map.reduce>
+  //三个参数：当前数组元素， 当前元素的索引，数组本身
+   /* users.forEach(function(a,b,c){
+        debugger;
+    })*/
+   var str= users.map(function(a,b,c){
+        return`<tr>
+        <td>${a.name}</td>
+        <td>${a.age}</td>
+        <td>${a.sex}</td>
+          </tr>  `;
+    }).reduce(function(qian,dangqian,index,shuzu){
+       //str=str
+    //debugger;
+    return qian+dangqian;
+   //   return 1000;
+});
+   console.log(str);
+
+
+   var tbl=document.getElementById("tbl") ;
+     tbl.innerHTML=str;
+
+  var result=  [1,2,3,4,5,6,7,8].filter(function(item,index,arr){
+
+       // return true;
+       // return false;
+      //return item==3;
+      return(item%2==0);
+    });
+    console.log(result);
+    var result=  [1,2,3,4,5,6,7,8].some(function(item,index,arr){
+            return item>7;        //只要有一个大于7
+    });
+     /*var result=  [1,2,3,4,5,6,7,8].every(function(item,index,arr){
+            return item>7;         //每一个都要大于7
+    });*/
+
+    var arr2=[];
+     //填充100个随机数，范围12-97，整数
+
+   /* for(var i=0;i<100; i++){
+        arr2[i]=Math.floor(Math.random()*86)+12;//0-1 不包含1
+    }*/     //排序
+   /* arr2.sort(function(a,b){
+        if(a>b){
+            return 7897
+        }else {
+            return -1233
+        }else {
+            return 0;
+        }
+    });*/
+
+    /*如果a大则返回正数，如果b大则返回负数
+    * 如果a,b相等则返回0*/
+
+    /* arr2.sort(function(a,b){
+       return b-a;
+    });*/
+
+</script>
+
+</body>

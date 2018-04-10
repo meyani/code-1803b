@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input type="text" oninput="haha(this)">
+<h1 id="alert"></h1>
+
+<script>
+
+    var hh=document.getElementById("alert");
+    function haha(a){
+        var c='';
+          for(var i=0;i< a.value.length;i++){
+         c=String.fromCharCode(a.value.charCodeAt(i)-32);
+
+  }
+
+        hh.innerHTML+=c;
+
+   }
+
+
+/*
+    String.fromCharCode(97-32)
+"A"
+
+String.fromCharCode(65+32)
+"a"*/
+</script>
+
+</body>
+</html>

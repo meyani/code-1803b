@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #biao th{
+            width: 98px;;
+        }
+        #biao{
+                position: absolute;
+    left: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<table id="biao"></table>
+
+<script>
+
+    var tab = "";
+    tab += "<tr><th>商品名称</th><th>数量</th><th>单价</th><th>总价</th></tr><tr>" +
+            "<th>乔丹牌篮球鞋</th>" + "<th>1双</th><th>998元</th><th>998</th></tr><th>黑人牙膏</th><th>5支</th><th>20</th><th>100</th></tr><tr><th>金骏眉顶级</th>" +
+            "<th>1.25两</th><th>328/两</th><th>410</th><tr><th></th>" +
+            "<th></th><th></th><th>1508</th></tr></tr>"
+
+document.getElementById('biao').innerHTML=tab;
+
+document.getElementById('biao').innerHTML=tab;
+
+ var cc=document.getElementById("biao");
+                //2.获取表格中tbody里面的行数(长度)
+                var cd=cc.tBodies[0].rows.length;
+                //alert(len);s
+                //3.对tbody里面的行进行遍历
+                for(var i=0;i<cd;i++){
+                	if(i%2==0){
+                        //4.对偶数行设置背景颜色
+                        cc.tBodies[0].rows[i].style.backgroundColor="powderblue";
+                    }else{
+                        //5.对奇数行设置背景颜色
+                        cc.tBodies[0].rows[i].style.backgroundColor="peachpuff";
+                    }
+                }
+
+</script>
+
+</body>
+</html>

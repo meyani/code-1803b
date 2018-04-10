@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="nav.css">
+    <style>
+        #root {
+            width: 700px;
+            margin: 0px auto;
+            position: relative;/*相对定位*/
+            min-height: 780px;
+        }
+
+        #head {
+
+
+        }
+
+        .mid { /*左边和右边的共同点*/
+            position: absolute; /*绝对定位*/
+            min-height: 500px;
+            top: 130px;
+        }
+
+        #left {
+            background: white;
+            width: 600px;
+            padding: 20px;
+           background-image: url("82.jpg");
+            /*filter: alpha(opacity=40);*/
+               width: 300px;
+
+        }
+        #left li{
+            width: 240px;
+            height: 30px;
+            border: 1px solid #ccc;
+
+        }
+        #left li:hover{
+            background: pink;
+
+        }
+         #left li:hover a{
+            color: burlywood;
+        }
+
+        #left li>a{
+            line-height: 30px;
+            text-decoration: none;
+            color: #41403f;
+            margin-left: 10px;
+        }
+
+        #right {
+            right: 0;
+            background: rgba(249, 255, 187, 0.15);
+            width: 420px;
+
+        }
+
+        #foot {
+
+            background: #ccc187;
+            height: 150px;
+            position: absolute;
+            width: 700px;
+            top: 530px;
+
+        }
+        #logo{
+            height: 100px;
+            overflow: hidden;
+
+        }
+        #logo h1{
+            display:inline;
+
+        }
+        #xuanyuan{
+        font-family: 新宋体;
+            color: #ccc187;
+            font-size: 22px;
+
+        }
+        .yingcang{
+          display: none;
+        }
+        #userliebiao{
+             width:240px;
+            height: 30px;
+            margin: auto;
+           overflow: hidden;
+
+        }
+       #userliebiao td{
+           background: #ccc187;
+           text-align: center;
+           line-height: 30px;
+           color: #ffffff;
+       }
+        #userliebiao td:hover{
+            background: #eeaeff;
+        }
+        #userliebiao:hover{
+            transition: all 1s;
+        }
+     input{
+
+             background: #fbffd8;
+           text-align: center;
+           line-height: 30px;
+           color:black;
+     }
+        #xingzhenuser{
+         text-align: center;
+        }
+        #logo img{
+                width: 50px;
+              height: 65px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div id="logo">
+            <img src="0017030510735639_b.jpg" >
+            <h1>虹猫学园</h1>
+            <span id="xuanyuan">明天的你一定会感谢今天的你</span>
+        </div>
+        <ul id="nav">
+
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+            <li>
+                <div class="li-before">列表项</div>
+                <div class="liafter">列表项</div>
+            </li>
+
+        </ul>
+    </div>
+    <div id="left" class="mid">
+        <ul>
+            <li><a href="javascript:show(0)">用户列表</a></li>
+            <li><a href="javascript:show(1)">新增用户</a></li>
+            <li><a href="javascript:show(2)">修改用户</a></li>
+            <li><a href="javascript:show(3)">充值</a></li>
+
+        </ul>
+
+      
+    </div>
+    <div id="right" class="mid">
+        <div class="child-content yingcang">
+            <table id="userliebiao">
+                <tr>
+                    <td>用户姓名</td>
+                    <td>用户性别</td>
+                    <td>用户年龄</td>
+
+                </tr>
+                <tr>
+                    <td>张三</td>
+                    <td>男</td>
+                    <td>18</td>
+
+                </tr>
+                <tr>
+                    <td>张红</td>
+                    <td>女</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>李四</td>
+                    <td>男</td>
+                    <td>22</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="child-content yingcang">
+         <table id="xingzhenuser">
+               <!--<tr>
+                   <td>新增用户</td>
+               </tr>-->
+             <tr>
+             <td>用户名</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="输入用户名">
+             </td>
+             </td>
+             </tr>
+             <tr>
+             <td>密码</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="输入密码">
+             </td>
+                 </tr>
+             <tr>
+                 <td>
+                 <button onclick="zhuce()">注册</button>
+	         <button onclick="denglu()">登录</button>
+             </tr>
+                </td>
+         </table>
+        </div>
+        <div class="child-content yingcang">
+            <table>
+                <tr>
+             <td>用户名</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="修改用户名">
+             </td>
+             </td>
+             </tr>
+             <tr>
+             <td>密码</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="修改密码">
+             </td>
+                 </tr>
+             <tr>
+                 <td>
+                 <button onclick="zhuce()">修改</button>
+            </table>
+         <table>
+
+         </table>
+
+
+
+
+        </div>
+        <div class="child-content yingcang">
+           <table>
+                <tr>
+             <td>Q币充值</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="输入充值金额">
+             </td>
+             </td>
+             </tr>
+             <tr>
+             <td>Q点充值</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="输入充值金额">
+             </td>
+                 </tr>
+               <tr>
+             <td>粉砖充值</td>
+             <td>
+                 <input type="text" name="yonghuming" placeholder="输入充值金额">
+             </td>
+                 </tr>
+
+             <tr>
+                 <td>
+                 <button onclick="zhuce()">充值</button>
+            </table>
+        </div>
+    </div>
+
+    <div id="foot"></div>
+</div>
+<script>
+    var rr=document.getElementById("right");
+    /*rr.children*/
+    function show(e){
+      /*  debugger;*/
+//        rr.children[e].style.display="block";
+        for(var i=0;i<4;i++){/*因为有4个元素*/
+            if(e==i){/*被点击的当前对应的div*/
+                 rr.children[e].classList.remove("yingcang");
+            }else{/*其他div*/
+                 rr.children[i].classList.add("yingcang");
+            }
+
+        }
+
+    }
+
+    //作业：
+  /*  用div+css实现一个三行两列式布局
+    实现以个完整的页面，要求有导航栏，LOGO区
+    左列实现一个列表，点击时，右列显示相应的内容
+*/
+</script>
+</body>
+</html>

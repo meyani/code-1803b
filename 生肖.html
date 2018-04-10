@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="tbl"></table>
+<form id="ff">
+    姓名：<input type="text" name="name"><br>
+    年龄：<input type="text" name="age"><br>
+    性别：男<input type="radio" name="sex" value="男">
+         女 <input type="radio" name="sex" value="女"><br>
+</form>
+<button onclick="queding()">确定</button><br>
+<script type="text/javascript">
+    var user=[
+       // {name:"姓名",sex:"性别",age:"年龄",shenxiao:"生肖"},
+        {name:"张三",sex:"女",age:"23",shenxiao:""},
+        {name:"彭桂香",sex:"女",age:"21",shenxiao:""},
+        {name:"老李",sex:"男",age:"24",shenxiao:""},
+        {name:"李师",sex:"女",age:"35",shenxiao:""},
+        {name:"王帅",sex:"男",age:"18",shenxiao:""},
+    ];
+     var ShenXiao = ['狗', '鸡', '猴', '羊', '马', '蛇', '龙', '兔', '虎', '牛', '鼠', '猪'];
+       var str="";
+       for(var i in user) {
+           str += "<tr>"
+           for (var j in user[i]) {
+            var s=ShenXiao[user[i].age%12];
+
+               str += "<td>" + user[i][j]  +"</td>"
+
+           }
+            if(user[i].age>0){
+             str += "<td>" + s+"</td>"
+
+              }
+
+           str += `<td><a href="javascript:del(${i})">删除</a>|<a href="javascript:update(${i})">修改</a></td> `
+
+           document.querySelector("#tbl").innerHTML = str
+
+
+       }
+</script>
+
+</body>
+</html>

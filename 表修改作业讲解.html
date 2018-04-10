@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1></h1>
+<table id="tbl"></table>
+<fom id="editUserInfoForm" style="display: none">
+   姓名：<input type="text" name="uName"><br>
+   密码：<input type="password" name="pass"><br>
+    <input type="button" value="确认" id="editok">
+    <input type="hidden" name="line">
+    <!--隐藏域-->
+
+</fom>
+<script type="text/javascript">
+  var tbl=document.querySelector("#tbl");
+   var fom=document.querySelector("#editUserInfoForm")
+    var usersInfo=localStorage.getItem('users');
+    if(!usersInfo){
+        alert("用户信息为空");
+        throw "用户信息为空";//程序的两种退出方式，return
+        //正常退出,throw异常退出
+
+
+    }
+  usersInfo=JSON.parse(usersInfo);
+   function showTable(usersInfo){//将数据映射到表格
+       var tbl_text=usersInfo.map(function(item,index){
+           return`
+           <tr id="${item.name}">
+           <td>${item.name}</td>
+           <td>${item.pass}</td>
+           <td>
+           <a href="javascript:edit('${item.name}',${index})"
+           >修改</a>
+           </td>
+           </tr>
+           `;
+       }).join("");//将数组的内容拼接成表格
+       tbl.innerHTML=tbl_text;
+
+   }
+      showTable(usersInfo);
+
+    function edit(id,index){//用户点击编辑事件
+       // var uxee=document.getElementById(id);
+        fom.style.display="block";//将表单显示
+        fom.uName.value=usersInfo[index].name;//用户名注入表单
+        fom.pass.value=usersInfo[index].pass;//密码注入表单
+        fom.line.value=index;//修改行数注入表单的隐藏域
+    }
+    var editok=document.getElementById('editok');
+  editok.onclick=function(e){
+      //1.让表单隐藏
+      fom.style.display="none"
+      //2.修改对应的行
+      var aa=usersInfo[fom.line.value];
+      aa.name=fom.uName.value;
+      aa.pass=fom.pass.value;
+      //3.修改的值要重新映射到表格
+      showTable(usersInfo);
+      //4.修改信息的值要重新存入本地存储
+      localStorage.setItem('users',JSON.stringify(usersInfo));
+
+  }
+</script>
+
+</body>
+</html>

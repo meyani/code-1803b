@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tbl{
+            width:100%;
+            height: 30%;
+            background: #fbeeb0;
+        }
+        td{
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        td:hover{
+           background: #f7fb99;
+        }
+    </style>
+</head>
+<body>
+<table id="tbl">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>段位</td>
+        <td>编辑</td>
+    </tr>
+</table>
+<button onclick="add()">添加</button>
+<button onclick="gx()">更新</button>
+<form id="ff" style="display: none">
+    <label for="age">姓名:</label>
+    <input type="text" id="uname" >
+    <div>
+    <label for="age">年龄:</label>
+        <input id="age" type="number" name="age">
+        </div>
+    </div>
+    <div>
+        <select name="duanwei" id="">
+        <option value="黄金">黄金</option>
+        <option value="青铜">青铜</option>
+        <option value="王者">王者</option>
+        <option value="白银dc">白银</option>
+    </select>
+    男 <input type="radio" name="sex" value="男" checked>
+    女 <input type="radio" name="sex" value="女">
+    </div>
+     <input type="button" onclick="addTr()" value="确认"><!--这个按钮不会提交-->
+</form>
+<script>
+
+
+   var tbl= document.getElementById("tbl");
+   var num=0;
+   function addTr(){
+       var ff=document.getElementById('ff')
+       var str= `<tr id="haha${++num}">
+        <td>${ff.uname.value}</td>
+        <td>${ff.age.value}</td>
+        <td>${ff.sex.value}</td>
+        <td>${ff.duanwei.value}</td>
+        <td><a href="javascript:del(${num})">删除</a>|<a href="javascript:genxin(${num})">更新</a></td>
+    </tr>`;
+       tbl.innerHTML+=str;
+     /*ff.style.display='none';*/
+   }
+  function del(abc){
+     var tr=document.getElementById("haha"+abc);
+      tr.remove();
+  }
+    function add(){
+        var ff=document.getElementById("ff");
+        ff.style.display="block";
+    }
+     function genxin(g) {
+         ff.style.display="block";
+         var trs=document.getElementById("haha"+g);
+         var tds=trs.getElementsByTagName("td");
+         r=trs.rowIndex;
+         ff.uname.value=tds[0].innerHTML;
+         ff.age.value=tds[1].innerHTML;
+         ff.sex.value=tds[2].innerHTML;
+         ff.duanwei.value=tds[3].innerHTML;
+
+     }
+    function gx(){
+        var tab=document.getElementById("tbl");
+        tab.rows[r].cells[0].innerHTML=ff.uname.value;
+         tab.rows[r].cells[1].innerHTML=ff.age.value;
+         tab.rows[r].cells[2].innerHTML=ff.sex.value;
+         tab.rows[r].cells[3].innerHTML=ff.duanwei.value;
+    }
+</script>
+</body>
+</html>

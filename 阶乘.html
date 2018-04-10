@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+    /*5的阶乘=4的阶乘*5
+    4的阶乘=3的阶乘*4
+    3的阶乘=2的阶乘*3
+    2的阶乘=1的阶乘*2
+    的阶乘=1*/
+/*
+    function jiecheng(num){
+        if(num==1)return 1;
+        return num*jiecheng(num-1)
+    }*/
+
+    function hanNuoTa(num,src,target,guodu){
+        if(num==0) return;
+        hanNuoTa(num-1,src,target,guodu)
+        console.log(`
+        将${num}${src}移动到${target}`);
+        hanNuoTa(num-1,guodu,target,src)
+    }
+    hanNuoTa('3','a','b','c');
+
+
+</script>
+
+
+</body>
+</html>

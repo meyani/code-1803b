@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+    var a=10;
+var b=a;
+   b=20;
+console.log(a);
+
+var p={
+age:20
+}
+var c=p;
+ c.age=30;
+
+console.log(p.age);
+
+    function temp(){
+        alert(111);
+
+    }
+    var d=temp;
+    d();//函数可以被赋值给一个变量
+
+
+    function add(a,b){
+       a+=20;
+        alert(a+b);
+
+    }
+    add(100,88);//方法参数的赋值就像变量的赋值一样
+
+    var e=200;
+    function suibian(a,b,cb){
+        cb(a,b);
+
+    }
+     suibian(87,13,add);
+
+
+    function sss(a,b,c){
+        function dapaidang(aaa){
+            return aaa;
+        }
+        function haha(bc){
+            return bc;
+        }
+        haha(dapaidang(bc))(a,b);
+    }
+   sss(87.13,add);
+
+</script>
+</body>
+</html>

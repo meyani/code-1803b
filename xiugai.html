@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       html{
+           position: absolute;
+           left: 400px;
+       }
+
+     input#name{
+          width: 153px;
+     }
+    #up{
+
+    }
+    #tab{
+           color: #795548;
+    }
+    </style>
+</head>
+<body>
+<table id="tab" border="1">
+    <tr id="a">
+
+    </tr>
+</table>
+<div id="root">
+    <form id="up">
+
+        <div class="item">
+
+          用户名：<input type="text" name="" value="" id="name">
+            <span id="userNameInfo"></span>
+        </div>
+        <div class="item">
+            昵称：<input type="text" name="uNane1">
+        </div>
+        <div class="item">
+            密码：<input type="password" name="" value="" id="pass">
+
+        </div>
+        <div class="item">男
+            <input name="sex" id="man" type="radio" value="" checked>女
+            <input name="sex" id="woman" type="radio" value="" >
+        </div>
+         <div class="item">
+             籍贯：<select name="jiguan" >
+             <option value="湖南">湖南</option>
+             <option value="四川">四川</option>
+             <option value="广州">广州</option>
+             <option value="上海">上海</option>
+             <option value="北京">北京</option>
+         </select>
+               生肖:  <select name="shengxiao" id="">
+        <option value="狗">狗</option>
+        <option value="鸡">鸡</option>
+        <option value="猴">猴</option>
+        <option value="羊">羊</option>
+        <option value="马">马</option>
+        <option value="蛇">蛇</option>
+        <option value="龙">龙</option>
+        <option value="兔">兔</option>
+        <option value="虎">虎</option>
+        <option value="牛">牛</option>
+        <option value="鼠">鼠</option>
+        <option value="猪">猪</option>
+
+         </div>
+
+
+    </select>
+
+        <div class="item">
+
+            <button onclick="qd()">确定</button>
+        </div>
+
+    </form>
+    <script>
+
+        var users=localStorage.getItem('users');
+        var tbl=document.getElementById('tab')
+        users=JSON.parse(users);
+        if(!Array.isArray(users))
+            console.error("不是数组");
+        function showTable() {
+            var str=`
+	<tr>
+			<th>姓名</th>
+			<th>昵称</th>
+			<th>密码</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>籍贯</th>
+			<th>生肖</th>
+
+	</tr>`;
+            for (var i in users) {
+                str+="<tr>"
+                for (var j in users[i]) {
+                    str+="<td>"	+users[i][j]+"</td>"
+                }
+                str+=`<td>
+	<a href="javascript:del(${i})">×</a>|<a href="javascript:ipdate(${i})">修改</a>
+	</td>`
+                str+="</tr>"
+            }
+            document.querySelector('#tab').innerHTML=str;
+        }
+        function del(line) {
+            delete users[line];
+            showTable();
+        }
+        function ipdate(line) {
+            var fomm=document.querySelector('#up');
+            curentBeFixLine=line;
+            for (var i in users[line]) {
+              fomm[i].value=users[line][i]
+            }
+        }
+        function qd() {
+            var fomr =document.querySelector('#up');
+            for (var i in users[curentBeFixLine]){
+                users[curentBeFixLine][i]=fomr[i].value;
+                localStorage.setItem('users',JSON.stringify(users))
+            }
+            showTable();
+        }
+        showTable();
+    </script>
+</body>
+</html>

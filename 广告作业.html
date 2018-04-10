@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         .haha{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+
+        }
+
+        .left{
+            position: absolute;
+            left: 10px;
+        }
+        .right{
+            position: absolute;
+            right:10px;
+        }
+        .l{
+                position: absolute;
+    right: 1px;
+    bottom: 130px;
+        }
+    #tupian img{
+        width:300px;
+    }
+    </style>
+</head>
+<body>
+<h1></h1>
+<div onclick="taozou(this)"  id="tupian" class="left">
+    <img src="1-150H01I225.jpg" alt="">
+    <button  class="l">X</button>
+</div>
+<script style="text/javascript">
+
+
+  function  taozou(a){
+     /* console.log(a);调试的时候用这个输出*/
+     // 判断当前这个东西在那里
+      if(a.classList.contains('left')){
+           //如果他在左边就让他跳到右边
+          a.classList.remove('left');
+          a.classList.add('right');
+      }else {
+          // 否则就让他去左边
+          a.classList.remove('right');
+          a.classList.add('left');
+      }
+
+
+  }
+var num =0;
+
+
+    setInterval(function(){
+         var dd = document.getElementById("tupian");
+
+       if  (++num%2== 0) {
+            dd.style.transition="all 5s";
+            dd.style.transform="translate(0,0)";
+        } else {
+             dd.style.transition="all 5s";
+        dd.style.transform="translate(0,450px)";
+
+
+        }
+
+    },5000);
+</script>
+</body>
+</html>
